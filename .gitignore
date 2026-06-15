@@ -1,0 +1,11 @@
+# Build leftovers / IDE
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.pdb
+
+# Local test artifacts
+verify_screenshot.png
+*.tmp
