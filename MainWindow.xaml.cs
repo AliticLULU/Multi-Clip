@@ -87,6 +87,7 @@ namespace MemoClip
             {
                 e.Cancel = true;
                 this.Hide();
+                SaveMemos(); // save when hiding to tray
                 return;
             }
             SaveMemos();
