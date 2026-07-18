@@ -186,12 +186,7 @@ namespace TetraClip
 
         string DataDir
         {
-            get
-            {
-                return Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    "TetraClip");
-            }
+            get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data"); }
         }
         string MemoFile { get { return Path.Combine(DataDir, "memos.dat"); } }
 
