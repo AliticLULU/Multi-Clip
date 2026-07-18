@@ -9,3 +9,6 @@ obj/
 # Local test artifacts
 verify_screenshot.png
 *.tmp
+
+# Local memo data
+data/

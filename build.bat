@@ -1,8 +1,11 @@
 @echo off
 rem ============================================================
-rem  Build script for TetraClip — compiles Program.cs into
+rem  Build script for MemoClip — compiles Program.cs into
 rem  TetraClip.exe using the C# compiler that ships with Windows
 rem  (.NET Framework 4.0). No SDK or internet required.
+rem
+rem  memo.html is the UI (no compilation needed, just keep
+rem  it next to TetraClip.exe).
 rem ============================================================
 setlocal
 
@@ -27,6 +30,8 @@ echo Compiling TetraClip.exe ...
 if %errorlevel%==0 (
   echo.
   echo Build OK  -^>  TetraClip.exe
+  echo.
+  echo Make sure memo.html is in the same folder as TetraClip.exe
 ) else (
   echo.
   echo Build FAILED.
