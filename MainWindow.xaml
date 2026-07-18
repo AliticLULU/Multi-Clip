@@ -48,34 +48,28 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Search box with icon -->
+                <!-- Search box -->
                 <Border Grid.Column="0" Background="White" CornerRadius="8"
                         BorderBrush="#E2E8F0" BorderThickness="1" Height="40">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="🔍" FontSize="14"
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="🔍" FontSize="14"
                                    VerticalAlignment="Center" Margin="12,0,6,0"
                                    Foreground="#94A3B8"/>
-                        <TextBox x:Name="SearchBox" Grid.Column="1"
-                                 Style="{StaticResource SearchBoxStyle}"
+                        <TextBox x:Name="SearchBox"
                                  BorderThickness="0" Background="Transparent"
-                                 TextChanged="SearchBox_TextChanged"
                                  VerticalAlignment="Stretch"
+                                 VerticalContentAlignment="Center"
+                                 TextChanged="SearchBox_TextChanged"
                                  FontFamily="Segoe UI" FontSize="13.5"
-                                 Padding="6,10,12,10">
-                            <TextBox.Resources>
-                                <VisualBrush x:Key="HintBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                    <VisualBrush.Visual>
-                                        <TextBlock Text="🔍  Search memos..." FontSize="13.5"
-                                                   Foreground="#94A3B8" FontFamily="Segoe UI"/>
-                                    </VisualBrush.Visual>
-                                </VisualBrush>
-                            </TextBox.Resources>
+                                 Padding="4,0,12,0">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="Foreground" Value="#1E293B"/>
+                                    <Setter Property="CaretBrush" Value="#4F6EF7"/>
+                                </Style>
+                            </TextBox.Style>
                         </TextBox>
-                    </Grid>
+                    </DockPanel>
                 </Border>
 
                 <!-- Add button -->
