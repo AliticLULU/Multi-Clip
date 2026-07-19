@@ -24,6 +24,7 @@ namespace MemoClip
 
         // ---- Tray ----
         NotifyIcon _tray;
+        ToolStripMenuItem _startupItem;
         System.Drawing.Icon _appIcon;
         bool _reallyExit = false;
 
@@ -335,10 +336,10 @@ namespace MemoClip
 
             menu.Items.Add(new ToolStripSeparator());
 
-            ToolStripMenuItem startupItem = new ToolStripMenuItem("Start with Windows", null,
+            _startupItem = new ToolStripMenuItem("Start with Windows", null,
                 delegate { ToggleStartup(); });
-            startupItem.Checked = IsStartupEnabled();
-            menu.Items.Add(startupItem);
+            _startupItem.Checked = IsStartupEnabled();
+            menu.Items.Add(_startupItem);
 
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem("Exit", null, delegate
@@ -388,11 +389,17 @@ namespace MemoClip
                 {
                     if (k == null) return;
                     if (IsStartupEnabled())
+                    {
                         k.DeleteValue(AppRegName, false);
+                        _startupItem.Checked = false;
+                        StatusLabel.Text = "Startup disabled";
+                    }
                     else
                     {
                         string exePath = "\"" + System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + "\"";
                         k.SetValue(AppRegName, exePath);
+                        _startupItem.Checked = true;
+                        StatusLabel.Text = "Startup enabled — MemoClip will start with Windows";
                     }
                 }
             }
