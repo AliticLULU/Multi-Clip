@@ -118,7 +118,7 @@ namespace MemoClip
 
         void Close_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Close(); // triggers OnWindowClosing → saves + hides to tray
         }
 
         // ---- Search / Filter ----
