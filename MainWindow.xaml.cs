@@ -390,7 +390,10 @@ namespace MemoClip
                     if (IsStartupEnabled())
                         k.DeleteValue(AppRegName, false);
                     else
-                        k.SetValue(AppRegName, System.Windows.Forms.Application.ExecutablePath);
+                    {
+                        string exePath = "\"" + System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + "\"";
+                        k.SetValue(AppRegName, exePath);
+                    }
                 }
             }
             catch { }
