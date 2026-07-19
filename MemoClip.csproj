@@ -12,6 +12,7 @@
     <ApplicationDefinition Include="App.xaml" />
     <Page Include="MainWindow.xaml" />
     <Page Include="MemoDialog.xaml" />
+    <Page Include="ConfirmDialog.xaml" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -20,6 +21,9 @@
     </Compile>
     <Compile Include="MemoDialog.xaml.cs">
       <DependentUpon>MemoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmDialog.xaml.cs">
+      <DependentUpon>ConfirmDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

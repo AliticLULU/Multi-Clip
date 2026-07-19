@@ -181,6 +181,22 @@ namespace MemoClip
             OpenAddDialog();
         }
 
+        void CopyMemo_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button btn = sender as System.Windows.Controls.Button;
+            if (btn == null) return;
+            MemoEntry entry = btn.Tag as MemoEntry;
+            if (entry == null) return;
+            try
+            {
+                System.Windows.Clipboard.SetText(entry.Value ?? "");
+                StatusLabel.Text = "Copied: " + ((entry.Key ?? "").Length > 30
+                    ? (entry.Key ?? "").Substring(0, 30) + "..."
+                    : (entry.Key ?? ""));
+            }
+            catch { }
+        }
+
         void EditMemo_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button btn = sender as System.Windows.Controls.Button;
@@ -201,13 +217,15 @@ namespace MemoClip
                 ? (entry.Key ?? "").Substring(0, 40) + "..."
                 : (entry.Key ?? "");
 
-            MessageBoxResult dr = MessageBox.Show(
-                "Delete memo \"" + preview + "\"?\n\nThis cannot be undone.",
-                "MemoClip",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
+            ConfirmDialog dlg = new ConfirmDialog(
+                "Delete Memo",
+                "Delete \"" + preview + "\"?\nThis cannot be undone.",
+                "Delete",
+                true);
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-            if (dr == MessageBoxResult.Yes)
+            if (dlg.ShowDialog() == true)
             {
                 _memos.Remove(entry);
                 SaveMemos();

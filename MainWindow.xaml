@@ -139,9 +139,12 @@
                                     <!-- Action buttons -->
                                     <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"
                                                 Orientation="Horizontal" VerticalAlignment="Top">
+                                        <Button Content="📋" Style="{StaticResource IconButtonStyle}"
+                                                Click="CopyMemo_Click" Tag="{Binding}"
+                                                ToolTip="Copy value"/>
                                         <Button Content="✎" Style="{StaticResource IconButtonStyle}"
                                                 Click="EditMemo_Click" Tag="{Binding}"
-                                                ToolTip="Edit"/>
+                                                ToolTip="Edit" Margin="4,0,0,0"/>
                                         <Button Content="✕" Style="{StaticResource IconButtonStyle}"
                                                 Click="DeleteMemo_Click" Tag="{Binding}"
                                                 ToolTip="Delete" Margin="4,0,0,0">
